@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Disease Diagnosis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Skin Disease Diagnosis</h1>
+            <p>Upload images to diagnose skin diseases using CNN model.</p>
+        </div>
+
+        <form action="/predict" method="POST" enctype="multipart/form-data" class="upload-form">
+            <label for="images" class="upload-label">Upload images (JPG, PNG, JPEG):</label>
+            <input type="file" name="images" id="images" accept="image/*" multiple class="upload-input">
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+
+        <!-- Clear Button -->
+        <form action="/clear" method="POST" class="clear-form">
+            <button type="submit" class="clear-btn">Clear All</button>
+        </form>
+
+        <div class="results">
+            {% if predictions %}
+                <div class="image-container">
+                    {% for prediction in predictions %}
+                        <div class="image-item">
+                            <img src="data:image/jpeg;base64,{{ prediction['image'] }}" alt="Uploaded Image" class="result-img">
+                            <p class="result-disease"><strong>{{ prediction['disease'] }}</strong></p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-predictions">No predictions yet. Upload images to get predictions.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
