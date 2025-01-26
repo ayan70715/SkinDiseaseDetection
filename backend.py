@@ -4,15 +4,15 @@ from io import BytesIO
 from PIL import Image
 import base64
 
-# Import your existing functions here
-from Diagnosis import prepare_input, diagnose  # Assuming these functions are in Diagnosis.py
+
+from Diagnosis import prepare_input, diagnose  
 
 app = Flask(__name__)
 
-# Configure file upload settings
+
 ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png'}
 
-# Function to check allowed extensions
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -33,13 +33,9 @@ def predict():
 
     for file in files:
         if file and allowed_file(file.filename):
-            # Convert image to PIL format
             img = Image.open(file.stream)
-
-            # Preprocess the image and get prediction
-            processed_img = prepare_input(img)  # Now send the image object to the prepare_input function
-            prediction = diagnose(processed_img)  # Use your function to get prediction
-
+            processed_img = prepare_input(img)  
+            prediction = diagnose(processed_img)  
             # Convert image to base64 to send it to the frontend
             buffered = BytesIO()
             img.save(buffered, format="JPEG")
@@ -47,7 +43,7 @@ def predict():
 
             predictions.append({
                 "image": img_str,
-                "disease": prediction  # Assuming `prediction` is the disease class name
+                "disease": prediction
             })
 
     return render_template('index.html', predictions=predictions)
