@@ -1,6 +1,5 @@
-/* Global Styles */
 body {
-    font-family: 'Book Antiqua', serif; /* Default font for the body */
+    font-family: 'Book Antiqua', serif; 
     background-color: #87CEFA; /* Sky Blue */
     margin: 0;
     padding: 0;
@@ -10,16 +9,16 @@ body {
 .container {
     max-width: 960px;
     margin: 50px auto;
-    padding: 50px;  /* Increased padding for vertical space */
+    padding: 50px;  
     background-color: #FFFACD; /* Lemon Yellow */
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    min-height: 500px;  /* Set a minimum height for the container */
+    min-height: 500px; 
 }
 
 h1 {
     font-family: 'Bernard MT Condensed', sans-serif;
-    font-size: 3.5rem; /* Increased from 2.5rem to 3.5rem */
+    font-size: 3.5rem;
     color: #ff852e;
     text-align: center;
     margin-bottom: 20px;
@@ -27,7 +26,7 @@ h1 {
 
 .header p {
     font-family: 'Book Antiqua', serif;
-    font-size: 1.5rem; /* Increased from 1.2rem to 1.5rem */
+    font-size: 1.5rem; 
     color: #18d5dc; /* Sky blue */
     text-align: center;
     margin-bottom: 40px;
